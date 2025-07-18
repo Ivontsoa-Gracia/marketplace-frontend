@@ -17,12 +17,7 @@
             :key="index"
             :value="productName"
           >{{ productName }}</option>
-        </select>
-
-        <div v-if="paginatedProducts.length === 0" class="no-results">
-          <i class="fas fa-exclamation-circle"></i>
-          Aucune annonce trouvée...
-        </div>
+        </select
 
         <input
           type="date"
@@ -45,6 +40,11 @@
             @delete="handleDelete(product)"
         />
       </div>
+
+      <div v-if="paginatedProducts.length === 0" class="no-results">
+          <i class="fas fa-exclamation-circle"></i>
+          Aucune annonce trouvée...
+        </div>
   
       <!-- Pagination -->
       <div class="pagination">
