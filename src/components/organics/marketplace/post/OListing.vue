@@ -223,7 +223,6 @@
   
   .listing-container {
     padding: 20px;
-    /* background-color: #f4f6f8; */
   }
   
   .filter-bar {
