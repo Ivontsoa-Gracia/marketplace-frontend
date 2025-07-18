@@ -209,7 +209,7 @@
         console.log('Delete:', product);
       },
       addListing() {
-        alert('Add Listing clicked!');
+        this.$router.push('/profil/listing/add');
       },
       goToPage(page) {
         this.currentPage = page;
