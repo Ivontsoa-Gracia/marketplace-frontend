@@ -268,13 +268,10 @@ export default {
   flex-shrink: 0;
 }
 
-.popup-img img {
-  height: 200px;
-}
 
 .popup-image {
   width: 100%;
-  height: auto;
+  height: 400px;
   border-radius: 8px;
   object-fit: cover;
 }
