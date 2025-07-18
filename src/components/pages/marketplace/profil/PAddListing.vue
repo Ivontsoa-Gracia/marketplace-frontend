@@ -11,7 +11,7 @@
   </template>
   
   <script>
-  import MAddListing from "../molecules/MAddListing.vue"; // adapte le chemin selon ton projet
+  import MAddListing from '../../../molecules/marketplace/profil/MAddListing.vue';
   
   export default {
     name: "PAddListing",

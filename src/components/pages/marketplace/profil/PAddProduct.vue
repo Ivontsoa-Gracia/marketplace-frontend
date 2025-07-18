@@ -3,7 +3,7 @@
 </template>
 
 <script>
-import MAddProduct from '../molecules/MAddProduct.vue';
+import MAddProduct from '../../../molecules/marketplace/profil/MAddProduct.vue';
 
 export default {
     components: {

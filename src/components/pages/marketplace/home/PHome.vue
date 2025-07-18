@@ -5,7 +5,7 @@
       <MHero />
     </div>
     <div id="products">
-      <MProducts />
+      <OProducts />
     </div>
     <div id="about">
       <MAbout />
@@ -16,17 +16,17 @@
 
   
   <script>
-  import MHeader from "../molecules/MHeader.vue";
-  import MHero from "../molecules/MHero.vue"; 
-  import MProducts from "../molecules/MProducts.vue";
-  import MAbout from "../molecules/MAbout.vue";
-  import MFooter from "../molecules/MFooter.vue";
+  import MHeader from '../../../molecules/marketplace/home/MHeader.vue';
+  import MAbout from '../../../molecules/marketplace/home/MAbout.vue';
+  import MHero from '../../../molecules/marketplace/home/MHero.vue';
+  import MFooter from '../../../molecules/marketplace/home/MFooter.vue';
+  import OProducts from '../../../organics/marketplace/post/OProducts.vue';
   
   export default {
     components: {
       MHeader,
       MHero,
-      MProducts,
+      OProducts,
       MAbout,
       MFooter,
     }

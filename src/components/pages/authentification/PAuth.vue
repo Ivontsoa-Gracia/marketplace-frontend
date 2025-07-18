@@ -1,13 +1,13 @@
 <template>
-    <MSignup />
+    <OSignup />
 </template>
 
 <script>
-import MSignup from '../molecules/MSignup.vue';
+import OSignup from '../../organics/authentification/OSignup.vue';
 
 export default {
     components: {
-        MSignup,
+        OSignup,
     }
 }
 </script>

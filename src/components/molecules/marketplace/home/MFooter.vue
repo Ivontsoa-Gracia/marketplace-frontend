@@ -68,7 +68,7 @@
   
   
   <script>
-  import AText from '../atomes/AText.vue';
+  import AText from '../../../atomes/AText.vue';
   
   export default {
     components: {

@@ -66,8 +66,8 @@
   </template>
   
   <script>
-  import MCard from './MCard.vue';
-  import AInput from '../atomes/AInput.vue';
+  import MCard from '../../../molecules/marketplace/post/MCard.vue';
+  import AInput from '../../../atomes/AInput.vue';
   
   export default {
     components: {
@@ -82,7 +82,7 @@
         products: [
           {
             category: 'SELLING',
-            imageUrl: '/images/background-hero.jpeg',
+            imageUrl: '/images/produit.jpeg',
             productName: 'Vanilla Bean',
             region: 'Madagascar',
             price: '$300 / kg',
@@ -90,7 +90,7 @@
           },
           {
             category: 'BUYING',
-            imageUrl: '/images/background-hero.jpeg',
+            imageUrl: '/images/produit.jpeg',
             productName: 'Cocoa Beans',
             region: 'Ghana',
             price: '$200 / kg',
@@ -98,7 +98,7 @@
           },
           {
             category: 'SELLING',
-            imageUrl: '/images/background-hero.jpeg',
+            imageUrl: '/images/produit.jpeg',
             productName: 'Vanilla Bean',
             region: 'Madagascar',
             price: '$300 / kg',
@@ -106,7 +106,7 @@
           },
           {
             category: 'BUYING',
-            imageUrl: '/images/background-hero.jpeg',
+            imageUrl: '/images/produit.jpeg',
             productName: 'Cocoa Beans',
             region: 'Ghana',
             price: '$200 / kg',
@@ -114,7 +114,7 @@
           },
           {
             category: 'SELLING',
-            imageUrl: '/images/background-hero.jpeg',
+            imageUrl: '/images/produit.jpeg',
             productName: 'Vanilla Bean',
             region: 'Madagascar',
             price: '$300 / kg',
@@ -122,7 +122,7 @@
           },
           {
             category: 'BUYING',
-            imageUrl: '/images/background-hero.jpeg',
+            imageUrl: '/images/produit.jpeg',
             productName: 'Cocoa Beans',
             region: 'Ghana',
             price: '$200 / kg',
@@ -130,7 +130,7 @@
           },
           {
             category: 'SELLING',
-            imageUrl: '/images/background-hero.jpeg',
+            imageUrl: '/images/produit.jpeg',
             productName: 'Vanilla Bean',
             region: 'Madagascar',
             price: '$300 / kg',
@@ -138,7 +138,7 @@
           },
           {
             category: 'BUYING',
-            imageUrl: '/images/background-hero.jpeg',
+            imageUrl: '/images/produit.jpeg',
             productName: 'Cocoa Beans',
             region: 'Ghana',
             price: '$200 / kg',

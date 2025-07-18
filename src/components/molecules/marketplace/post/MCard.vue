@@ -133,10 +133,10 @@
   </template>
 
 <script>
-import AText from '../atomes/AText.vue';
-import AButton from '../atomes/AButton.vue';
-import AImage from '../atomes/AImage.vue';
-import OPopup from '../organics/OPopup.vue';
+import AText from '../../../atomes/AText.vue';
+import AButton from '../../../atomes/AButton.vue';
+import AImage from '../../../atomes/AImage.vue';
+import OPopup from '../../../organics/OPopup.vue';
 
 export default {
   components: {

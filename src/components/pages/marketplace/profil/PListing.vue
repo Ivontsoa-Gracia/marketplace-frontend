@@ -1,13 +1,13 @@
 <template>
-    <MListing/>
+    <OListing/>
 </template>
 
 <script>
-  import MListing from "../molecules/MListing.vue";
+  import OListing from '../../../organics/marketplace/post/OListing.vue';
   
   export default {
     components: {
-      MListing,
+      OListing,
     }
   }
 </script>

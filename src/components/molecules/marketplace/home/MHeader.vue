@@ -72,8 +72,8 @@
   
   
   <script>
-  import AIcon from "../atomes/AIcon.vue";
-  import AButton from "../atomes/AButton.vue";
+  import AIcon from "../../../atomes/AIcon.vue";
+  import AButton from "../../../atomes/AButton.vue";
   
   export default {
     components: {

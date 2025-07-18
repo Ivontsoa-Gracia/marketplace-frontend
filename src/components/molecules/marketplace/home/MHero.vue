@@ -79,9 +79,9 @@
   
   
   <script>
-  import AButton from '../atomes/AButton.vue';
-  import AText from '../atomes/AText.vue';
-  import AInput from '../atomes/AInput.vue';
+  import AButton from '../../../atomes/AButton.vue';
+  import AText from '../../../atomes/AText.vue';
+  import AInput from '../../../atomes/AInput.vue';
   
   export default {
     components: {

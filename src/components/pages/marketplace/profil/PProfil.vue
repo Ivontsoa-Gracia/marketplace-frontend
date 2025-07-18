@@ -5,7 +5,7 @@
   </template>
   
   <script>
-  import MSidebar from "../molecules/MSidebar.vue";
+  import MSidebar from '../../../molecules/marketplace/profil/MSidebar.vue';
   
   export default {
     components: {

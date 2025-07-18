@@ -74,7 +74,7 @@
   </template>
   
   <script>
-  import MCardListing from './MCardListing.vue';
+  import MCardListing from '../../molecules/marketplace/post/MCardListing.vue';
   
   export default {
     components: { MCardListing },

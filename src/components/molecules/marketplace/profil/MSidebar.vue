@@ -72,7 +72,7 @@
   </template>
   
   <script>
-  import AIcon from "../atomes/AIcon.vue";
+  import AIcon from "../../../atomes/AIcon.vue";
   
   export default {
     name: "MSidebar",

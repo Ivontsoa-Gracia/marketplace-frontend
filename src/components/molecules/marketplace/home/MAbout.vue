@@ -89,9 +89,9 @@
 </template>
 
 <script>
-import AText from '../atomes/AText.vue';
-import AButton from '../atomes/AButton.vue';
-import AImage from '../atomes/AImage.vue';
+import AText from '../../../atomes/AText.vue';
+import AButton from '../../../atomes/AButton.vue';
+import AImage from '../../../atomes/AImage.vue';
 
 export default {
   components: {
