@@ -17,7 +17,7 @@
             :key="index"
             :value="productName"
           >{{ productName }}</option>
-        </select
+        </select>
 
         <input
           type="date"
@@ -44,7 +44,7 @@
       <div v-if="paginatedProducts.length === 0" class="no-results">
           <i class="fas fa-exclamation-circle"></i>
           Aucune annonce trouvée...
-        </div>
+      </div>
   
       <!-- Pagination -->
       <div class="pagination">
