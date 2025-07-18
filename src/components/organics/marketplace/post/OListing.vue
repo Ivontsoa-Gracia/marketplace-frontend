@@ -74,7 +74,7 @@
   </template>
   
   <script>
-  import MCardListing from '../../molecules/marketplace/post/MCardListing.vue';
+  import MCardListing from '../../../molecules/marketplace/post/MCardListing.vue';
   
   export default {
     components: { MCardListing },
@@ -83,75 +83,75 @@
         products: [
           {
             category: 'SELLING',
-            imageUrl: '/images/background-hero.jpeg',
-            productName: 'Vanilla Bean',
+            imageUrl: '/images/corn.jpeg',
+            productName: 'Corn',
             region: 'Madagascar',
             price: '$300 / kg',
-            description: 'High quality vanilla beans.',
-            date: '2025-07-14',
+            description: 'High-quality vanilla beans, hand-picked and sun-dried for maximum flavor.'
           },
           {
             category: 'BUYING',
-            imageUrl: '/images/background-hero.jpeg',
+            imageUrl: '/images/cacao.jpeg',
             productName: 'Cocoa Beans',
             region: 'Ghana',
             price: '$200 / kg',
-            description: 'Buying premium cocoa beans.',
-            date: '2025-07-10',
+            description: 'Looking for premium cocoa beans with high butter content for chocolate making.'
           },
           {
             category: 'SELLING',
-            imageUrl: '/images/background-hero.jpeg',
-            productName: 'Vanilla Bean',
+            imageUrl: '/images/vanille.jpeg',
+            productName: 'Vanilla beans',
             region: 'Madagascar',
             price: '$300 / kg',
-            description: 'High quality vanilla beans.',
-            date: '2025-07-14',
-          },
-          {
-            category: 'BUYING',
-            imageUrl: '/images/background-hero.jpeg',
-            productName: 'Cocoa Beans',
-            region: 'Ghana',
-            price: '$200 / kg',
-            description: 'Buying premium cocoa beans.',
-            date: '2025-07-10',
+            description: 'Organic vanilla harvested sustainably in Madagascar’s eastern regions.'
           },
           {
             category: 'SELLING',
-            imageUrl: '/images/background-hero.jpeg',
-            productName: 'Vanilla Bean',
+            imageUrl: '/images/corn.jpeg',
+            productName: 'Corn',
             region: 'Madagascar',
             price: '$300 / kg',
-            description: 'High quality vanilla beans.',
-            date: '2025-07-14',
+            description: 'High-quality vanilla beans, hand-picked and sun-dried for maximum flavor.'
           },
           {
             category: 'BUYING',
-            imageUrl: '/images/background-hero.jpeg',
+            imageUrl: '/images/cacao.jpeg',
             productName: 'Cocoa Beans',
             region: 'Ghana',
             price: '$200 / kg',
-            description: 'Buying premium cocoa beans.',
-            date: '2025-07-10',
+            description: 'Looking for premium cocoa beans with high butter content for chocolate making.'
           },
           {
             category: 'SELLING',
-            imageUrl: '/images/background-hero.jpeg',
-            productName: 'Vanilla Bean',
+            imageUrl: '/images/vanille.jpeg',
+            productName: 'Vanilla beans',
             region: 'Madagascar',
             price: '$300 / kg',
-            description: 'High quality vanilla beans.',
-            date: '2025-07-14',
+            description: 'Organic vanilla harvested sustainably in Madagascar’s eastern regions.'
+          },
+          {
+            category: 'SELLING',
+            imageUrl: '/images/corn.jpeg',
+            productName: 'Corn',
+            region: 'Madagascar',
+            price: '$300 / kg',
+            description: 'High-quality vanilla beans, hand-picked and sun-dried for maximum flavor.'
           },
           {
             category: 'BUYING',
-            imageUrl: '/images/background-hero.jpeg',
+            imageUrl: '/images/cacao.jpeg',
             productName: 'Cocoa Beans',
             region: 'Ghana',
             price: '$200 / kg',
-            description: 'Buying premium cocoa beans.',
-            date: '2025-07-10',
+            description: 'Looking for premium cocoa beans with high butter content for chocolate making.'
+          },
+          {
+            category: 'SELLING',
+            imageUrl: '/images/vanille.jpeg',
+            productName: 'Vanilla beans',
+            region: 'Madagascar',
+            price: '$300 / kg',
+            description: 'Organic vanilla harvested sustainably in Madagascar’s eastern regions.'
           },
         ],
         selectedCategory: '',

@@ -17,7 +17,7 @@
 </template>
 
 <script>
-import AButton from '../atomes/AButton.vue';
+import AButton from '../../../atomes/AButton.vue';
 
 export default {
     components: {
