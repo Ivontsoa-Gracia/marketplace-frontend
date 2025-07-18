@@ -18,8 +18,12 @@
             :value="productName"
           >{{ productName }}</option>
         </select>
-  
-        <!-- Filtre date (input type date) -->
+
+        <div v-if="paginatedProducts.length === 0" class="no-results">
+          <i class="fas fa-exclamation-circle"></i>
+          Aucune annonce trouvée...
+        </div>
+
         <input
           type="date"
           v-model="selectedDate"
@@ -303,5 +307,25 @@
     color: white;
     border-color: #2dcc70;
   }
+
+  .no-results {
+    text-align: center;
+    color: #999;
+    font-size: 18px;
+    font-weight: 500;
+    font-family: 'Poppins', sans-serif;
+    margin-top: 50px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+    opacity: 0.8;
+}
+
+.no-results i {
+  font-size: 30px;
+  color: #ccc;
+}
+
   </style>
   
