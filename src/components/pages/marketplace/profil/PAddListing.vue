@@ -29,8 +29,6 @@
     methods: {
       handleCreate(newListing) {
         console.log("New Listing Submitted:", newListing);
-        // 🔄 Tu peux rediriger ou enregistrer via API ici
-        // this.$router.push('/profil/listing/view');
       },
     },
   };
