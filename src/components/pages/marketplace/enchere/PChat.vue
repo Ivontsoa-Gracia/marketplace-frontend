@@ -18,12 +18,14 @@
         </div>
   
         <div class="messages">
-          <MessageBubble
-            v-for="(msg, i) in messages"
-            :key="i"
-            :message="msg.text"
-            :sent="msg.sent"
-          />
+            <MessageBubble
+                v-for="(msg, i) in messages"
+                :key="i"
+                :message="msg.text"
+                :sent="msg.sent"
+                :time="msg.time"
+            />
+
         </div>
   
         <div class="input-bar">
@@ -41,19 +43,39 @@
   import MessageBubble from '../../../organics/marketplace/enchere/MessageBubble.vue'
   import MSidebar from '../../../molecules/marketplace/enchere/MSidebar.vue'
   import Annonce from '../../../organics/marketplace/enchere/Annonce.vue'
+
+  const baseTime = new Date()
+
+    const messages = ref([
+    {
+        text: 'Salut !',
+        sent: false,
+        time: new Date(baseTime).toISOString(),
+    },
+    {
+        text: 'Coucou toi 💚',
+        sent: true,
+        time: new Date(baseTime.getTime() + 30 * 60 * 1000).toISOString(), // +30min
+    },
+    ])
+
   
   const input = ref('')
-  const messages = ref([
-    { text: 'Salut !', sent: false },
-    { text: 'Coucou toi 💚', sent: true },
-  ])
   
   const sendMessage = () => {
     if (input.value.trim()) {
-      messages.value.push({ text: input.value, sent: true })
-      input.value = ''
-    }
+        const lastTime = new Date(messages.value[messages.value.length - 1]?.time ?? new Date())
+        const newTime = new Date(lastTime.getTime() + 30 * 60 * 1000) // +30 min
+
+        messages.value.push({
+        text: input.value,
+        sent: true,
+        time: newTime.toISOString(),
+        })
+        input.value = ''
+    } 
   }
+
   </script>
   
   <style scoped>

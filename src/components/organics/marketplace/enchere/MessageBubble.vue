@@ -3,41 +3,61 @@
       <div class="bubble">
         {{ message }}
       </div>
+      <div class="timestamp">{{ formatTime(time) }}</div>
     </div>
   </template>
   
   <script setup>
-  defineProps({
+  const props = defineProps({
     message: String,
     sent: Boolean,
+    time: String, // ISO string
   })
+  
+  const formatTime = (iso) => {
+    const date = new Date(iso)
+    return date.toLocaleString('fr-FR', {
+      day: '2-digit',
+      month: 'short',
+      hour: '2-digit',
+      minute: '2-digit',
+    }).replace(':', 'h ')
+  }
   </script>
   
   <style scoped>
   .message-container {
     display: flex;
-    margin-bottom: 8px;
+    flex-direction: column;
+    margin-bottom: 12px;
+    max-width: 70%;
   }
   
   .sent {
-    justify-content: flex-end;
+    align-self: flex-end;
   }
   
   .received {
-    justify-content: flex-start;
+    align-self: flex-start;
   }
   
   .bubble {
-    max-width: 60%;
     padding: 10px 15px;
     border-radius: 20px;
-    word-break: break-word;
-    background-color: #005c4b; /* Sent */
+    background-color: #005c4b;
     color: white;
+    word-break: break-word;
   }
   
   .received .bubble {
-    background-color: #202c33; /* Received */
+    background-color: #202c33;
+  }
+  
+  .timestamp {
+    font-size: 0.75rem;
+    color: #a0a0a0;
+    margin-top: 5px;
+    padding: 0 8px;
   }
   </style>
   
