@@ -55,7 +55,7 @@
               </li>
   
               <li>
-                <router-link to="/chat" class="nav-link">
+                <router-link to="/profil/enchere/chat" class="nav-link">
                   <i class="fas fa-comments"></i> <span>ChatBox</span>
                 </router-link>
               </li>

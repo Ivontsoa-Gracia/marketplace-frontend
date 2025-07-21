@@ -8,6 +8,7 @@ import PListing from '../components/pages/marketplace/profil/PListing.vue';
 
 import PAddListing from '../components/pages/marketplace/profil/PAddListing.vue';
 import PAddProduct from '../components/pages/marketplace/profil/PAddProduct.vue';
+import PChat from '../components/pages/marketplace/enchere/PChat.vue';
 
 const routes = [
   { path: '/', name: 'home', component: PHome },
@@ -30,6 +31,11 @@ const routes = [
         path: 'product/add', 
         name: 'add-product',
         component: PAddProduct
+      },
+      {
+        path: 'enchere/chat', 
+        name: 'chat-enchere',
+        component: PChat
       }
     ]
     
