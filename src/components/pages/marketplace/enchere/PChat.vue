@@ -24,6 +24,7 @@
                 :message="msg.text"
                 :sent="msg.sent"
                 :time="msg.time"
+                profileImage="/images/profil.jpeg"
             />
 
         </div>
