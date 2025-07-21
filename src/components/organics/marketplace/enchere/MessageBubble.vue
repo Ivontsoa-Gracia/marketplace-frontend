@@ -1,13 +1,13 @@
 <template>
   <div :class="['message-container', sent ? 'sent' : 'received']">
-    <!-- Profil affiché seulement si message reçu -->
-    <img v-if="!sent" :src="profileImage" alt="Profil" class="profile-pic" />
-
+    <img
+      class="profile-pic"
+      :src="profileUrl"
+      alt="Profile"
+    />
     <div class="message-content">
       <div class="timestamp">{{ formatTime(time) }}</div>
-      <div class="bubble">
-        {{ message }}
-      </div>
+      <div class="bubble">{{ message }}</div>
     </div>
   </div>
 </template>
@@ -17,10 +17,7 @@ const props = defineProps({
   message: String,
   sent: Boolean,
   time: String,
-  profileImage: {
-    type: String,
-    default: '/default-profile.png' // Image par défaut
-  }
+  profileUrl: String, // URL de la photo de profil
 })
 
 const formatTime = (iso) => {
@@ -42,6 +39,7 @@ const formatTime = (iso) => {
 }
 
 .sent {
+  flex-direction: row-reverse;
   justify-content: flex-end;
 }
 
@@ -50,10 +48,11 @@ const formatTime = (iso) => {
 }
 
 .profile-pic {
-  width: 25px;
-  height: 25px;
+  width: 32px;
+  height: 32px;
   border-radius: 50%;
-  margin-right: 8px;
+  object-fit: cover;
+  margin: 0 8px;
 }
 
 .message-content {
