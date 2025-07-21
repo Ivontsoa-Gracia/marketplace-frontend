@@ -1,8 +1,8 @@
 <template>
     <div class="sidebar">
-      <h2>Discussions</h2>
+      <h3>Discussions</h3>
       <ul>
-        <li v-for="(contact, index) in contacts" :key="index" @click="selectContact(contact)">
+        <li v-for="(contact, index) in contacts" :key="index">
           {{ contact.name }}
         </li>
       </ul>
@@ -15,23 +15,19 @@
   const contacts = ref([
     { name: 'Alice' },
     { name: 'Bob' },
-    { name: 'Gracia 💌' },
+    { name: 'Toi 💬' }
   ])
-  
-  const selectContact = (contact) => {
-    console.log('Contact sélectionné :', contact.name)
-  }
   </script>
   
   <style scoped>
   .sidebar {
-    width: 300px;
+    width: 25%;
     background-color: #202c33;
+    color: white;
     padding: 1rem;
     overflow-y: auto;
   }
-  .sidebar h2 {
-    margin-top: 0;
+  .sidebar h3 {
     color: #25d366;
   }
   .sidebar ul {
@@ -40,8 +36,8 @@
   }
   .sidebar li {
     padding: 10px;
-    cursor: pointer;
     border-bottom: 1px solid #2a3942;
+    cursor: pointer;
   }
   .sidebar li:hover {
     background-color: #2a3942;
