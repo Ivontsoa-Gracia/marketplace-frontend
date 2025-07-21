@@ -58,7 +58,7 @@
   }
   
   .bubble {
-    max-width: 70%;
+    max-width: 90%;
     padding: 10px 15px;
     border-radius: 20px;
     word-break: break-word;
