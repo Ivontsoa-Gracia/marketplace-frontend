@@ -1,6 +1,8 @@
 <template>
-    <div :class="['bubble', sent ? 'sent' : 'received']">
-      {{ message }}
+    <div :class="['message-container', sent ? 'sent' : 'received']">
+      <div class="bubble">
+        {{ message }}
+      </div>
     </div>
   </template>
   
@@ -12,22 +14,30 @@
   </script>
   
   <style scoped>
+  .message-container {
+    display: flex;
+    margin-bottom: 8px;
+  }
+  
+  .sent {
+    justify-content: flex-end;
+  }
+  
+  .received {
+    justify-content: flex-start;
+  }
+  
   .bubble {
     max-width: 60%;
     padding: 10px 15px;
     border-radius: 20px;
-    margin-bottom: 10px;
     word-break: break-word;
-  }
-  .sent {
-    background-color: #005c4b;
-    align-self: flex-end;
+    background-color: #005c4b; /* Sent */
     color: white;
   }
-  .received {
-    background-color: #202c33;
-    align-self: flex-start;
-    color: white;
+  
+  .received .bubble {
+    background-color: #202c33; /* Received */
   }
   </style>
   
