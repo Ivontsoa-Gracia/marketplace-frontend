@@ -1,9 +1,10 @@
 <template>
     <div :class="['message-container', sent ? 'sent' : 'received']">
+    <div class="timestamp">{{ formatTime(time) }}</div>
+
       <div class="bubble">
         {{ message }}
       </div>
-      <div class="timestamp">{{ formatTime(time) }}</div>
     </div>
   </template>
   
@@ -28,36 +29,33 @@
   <style scoped>
   .message-container {
     display: flex;
-    flex-direction: column;
-    margin-bottom: 12px;
-    max-width: 70%;
+    margin-bottom: 8px;
   }
   
   .sent {
-    align-self: flex-end;
+    justify-content: flex-end;
   }
   
   .received {
-    align-self: flex-start;
+    justify-content: flex-start;
   }
   
   .bubble {
+    max-width: 60%;
     padding: 10px 15px;
     border-radius: 20px;
-    background-color: #005c4b;
-    color: white;
     word-break: break-word;
+    background-color: #005c4b; /* Sent */
+    color: white;
   }
   
   .received .bubble {
-    background-color: #202c33;
+    background-color: #202c33; /* Received */
   }
-  
+
   .timestamp {
-    font-size: 0.75rem;
-    color: #a0a0a0;
-    margin-top: 5px;
-    padding: 0 8px;
+    text-align: center;
+    align-items: center;
   }
   </style>
   
