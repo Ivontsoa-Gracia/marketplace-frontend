@@ -1,7 +1,7 @@
 <template>
     <div class="chat">
+      <MSidebar />
       <div class="messages">
-        <MSidebar />
         <MessageBubble
           v-for="(msg, i) in messages"
           :key="i"
