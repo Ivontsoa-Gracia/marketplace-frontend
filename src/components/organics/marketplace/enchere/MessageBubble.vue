@@ -11,9 +11,28 @@
           <div class="offer-text">{{ message }}</div>
 
           <div v-if="offerAccepted === null" class="offer-actions">
-            <button @click="$emit('accept-offer')" class="btn accept">✅ Accepter</button>
-            <button @click="$emit('decline-offer')" class="btn decline">❌ Refuser</button>
-            <button @click="$emit('propose-again')" class="btn propose">🔄 Proposer une autre offre</button>
+            <button @click="$emit('accept-offer')" class="icon-btn accept" title="Accepter">
+              <!-- Icône check -->
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
+                <polyline points="20 6 9 17 4 12" />
+              </svg>
+            </button>
+
+            <button @click="$emit('decline-offer')" class="icon-btn decline" title="Refuser">
+              <!-- Icône croix -->
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
+                <line x1="18" y1="6" x2="6" y2="18" />
+                <line x1="6" y1="6" x2="18" y2="18" />
+              </svg>
+            </button>
+
+            <button @click="$emit('propose-again')" class="icon-btn propose" title="Proposer une autre offre">
+              <!-- Icône redo / refresh -->
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
+                <polyline points="1 4 1 10 7 10" />
+                <path d="M3.51 15a9 9 0 1 0 2.13-9.36L1 10" />
+              </svg>
+            </button>
           </div>
 
           <div v-else class="offer-status" :class="{ accepted: offerAccepted, declined: !offerAccepted }">
@@ -28,6 +47,7 @@
     </div>
   </div>
 </template>
+
 
 <script setup>
 const props = defineProps({
@@ -96,20 +116,20 @@ const formatTime = (iso) => {
   word-break: break-word;
   background-color: #005c4b;
   color: white;
+  font-weight: 500;
 }
 
 .received .bubble {
   background-color: #202c33;
 }
 
-/* Carte offre */
 .offer-card {
   max-width: 320px;
-  background: #2a3942;
+  padding: 14px 18px;
   border-radius: 12px;
-  padding: 12px 16px;
-  color: white;
-  box-shadow: 0 2px 8px rgba(0,0,0,0.3);
+  color: #e0e0e0;
+  background: rgba(40, 50, 60, 0.85);
+  border: 1px solid rgba(255, 255, 255, 0.15);
   font-weight: 600;
   word-break: break-word;
 }
@@ -122,44 +142,64 @@ const formatTime = (iso) => {
 
 .offer-actions {
   display: flex;
-  gap: 10px;
+  gap: 12px;
   justify-content: flex-end;
 }
 
-.btn {
-  padding: 6px 12px;
+.icon-btn {
+  background: transparent;
   border: none;
-  border-radius: 6px;
   cursor: pointer;
-  font-weight: 600;
-  transition: background-color 0.3s;
+  padding: 8px;
+  border-radius: 50%;
+  color: white;
+  width: 40px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  /* Perspective pour l'effet 3D */
+  perspective: 500px;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
+.icon-btn svg {
+  width: 22px;
+  height: 22px;
+  stroke: currentColor;
+  transition: stroke 0.3s ease;
+}
+
+/* Animation 3D au hover */
+.icon-btn:hover {
+  transform: rotateX(15deg) rotateY(15deg) scale(1.1);
+  box-shadow: 0 8px 12px rgba(0, 255, 150, 0.5);
+}
+
+/* Couleurs selon action */
 .accept {
-  background-color: #25d366;
-  color: white;
+  color: #25d366;
 }
 
 .accept:hover {
-  background-color: #1ebe58;
+  box-shadow: 0 8px 15px rgba(37, 211, 102, 0.7);
 }
 
 .decline {
-  background-color: #dc3545;
-  color: white;
+  color: #dc3545;
 }
 
 .decline:hover {
-  background-color: #b82a3b;
+  box-shadow: 0 8px 15px rgba(220, 53, 69, 0.7);
 }
 
 .propose {
-  background-color: #f0ad4e;
-  color: black;
+  color: #f0ad4e;
 }
 
 .propose:hover {
-  background-color: #d49930;
+  box-shadow: 0 8px 15px rgba(240, 173, 78, 0.7);
 }
 
 /* Statut offre */
@@ -168,15 +208,15 @@ const formatTime = (iso) => {
   padding: 8px;
   text-align: center;
   border-radius: 8px;
+  color: white;
 }
 
 .accepted {
   background-color: #25d366;
-  color: white;
 }
 
 .declined {
   background-color: #dc3545;
-  color: white;
 }
+
 </style>

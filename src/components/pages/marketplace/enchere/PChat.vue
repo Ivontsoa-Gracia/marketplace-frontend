@@ -45,7 +45,14 @@
             <path d="M3.4,20.4l19.3-8.2c0.6-0.3,0.6-1.1,0-1.4L3.4,2.6C2.8,2.3,2.1,2.8,2.3,3.4l2.5,7.4c0.1,0.3,0.3,0.5,0.6,0.6l9.2,1l-9.2,1c-0.3,0-0.5,0.2-0.6,0.6L2.3,19.6C2.1,20.2,2.8,20.7,3.4,20.4z"/>
           </svg>
         </button>
-        <button @click="toggleOfferForm" class="offer-btn" title="Proposer une offre">💸</button>
+        <button @click="toggleOfferForm" class="icon-btn propose" title="Proposer une offre" aria-label="Proposer une offre">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M20 12v6a2 2 0 0 1-2 2h-6l-8-8 8-8h6a2 2 0 0 1 2 2v6z"/>
+            <circle cx="16" cy="8" r="1"/>
+          </svg>
+        </button>
+
+
       </div>
 
       <!-- Formulaire d'offre -->
@@ -151,7 +158,7 @@ const checkIfBothAccepted = () => {
   if (lastOffer && lastOffer.sent && lastOffer.offerAccepted === true) {
     // simuler que le contact accepte aussi
     messages.value.push({
-      text: `L'offre a été acceptée ! ✅`,
+      text: `L'offre a été acceptée !`,
       sent: false,
       time: new Date().toISOString(),
       profileImage: '/images/profil.jpeg',
@@ -165,7 +172,7 @@ const checkIfBothAccepted = () => {
 <style scoped>
 .layout {
   display: flex;
-  height: 100vh;
+  height: 100%;
   background-color: #111b21;
   overflow: hidden;
 }
@@ -274,4 +281,35 @@ const checkIfBothAccepted = () => {
   padding: 1rem;
   overflow-y: auto;
 }
+
+.icon-btn {
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  padding: 8px;
+  border-radius: 50%;
+  color: #f0ad4e; /* couleur or orangé */
+  width: 40px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  perspective: 500px;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.icon-btn svg {
+  width: 24px;
+  height: 24px;
+  stroke: currentColor;
+  transition: stroke 0.3s ease;
+}
+
+.icon-btn:hover {
+  transform: rotateX(15deg) rotateY(15deg) scale(1.1);
+  box-shadow: 0 8px 12px rgba(240, 173, 78, 0.7);
+  color: #d49930;
+}
+
 </style>
