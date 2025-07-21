@@ -32,7 +32,9 @@
           :offerAccepted="msg.offerAccepted"
           @accept-offer="acceptOffer(i)"
           @decline-offer="declineOffer(i)"
+          @propose-again="proposeAgain(i)"
         />
+
       </div>
 
       <!-- Barre d'envoi -->
@@ -138,12 +140,18 @@ const declineOffer = (index) => {
   messages.value[index].offerAccepted = false
 }
 
+const proposeAgain = (index) => {
+  // Affiche le formulaire offre pour refaire une proposition
+  showOfferForm.value = true
+}
+
 const checkIfBothAccepted = () => {
+  // Exemple simple : si utilisateur et contact ont accepté, termine la négociation
   const lastOffer = messages.value.slice().reverse().find(m => m.isOffer)
   if (lastOffer && lastOffer.sent && lastOffer.offerAccepted === true) {
-    // simulate contact also accepted
+    // simuler que le contact accepte aussi
     messages.value.push({
-      text: `L'offre de ${offerPrice.value || '...' }€ a été acceptée ! ✅`,
+      text: `L'offre a été acceptée ! ✅`,
       sent: false,
       time: new Date().toISOString(),
       profileImage: '/images/profil.jpeg',
@@ -151,6 +159,7 @@ const checkIfBothAccepted = () => {
     negotiationStatus.value = 'Négociation terminée'
   }
 }
+
 </script>
 
 <style scoped>
