@@ -1,16 +1,13 @@
 <template>
   <div :class="['message-container', sent ? 'sent' : 'received']">
-    <!-- Image de profil -->
-    <img
-      class="profile-pic"
-      :src="profileUrl"
-      alt="Profil"
-    />
+    <!-- Profil affiché seulement si message reçu -->
+    <img v-if="!sent" :src="profileImage" alt="Profil" class="profile-pic" />
 
-    <!-- Contenu du message -->
     <div class="message-content">
       <div class="timestamp">{{ formatTime(time) }}</div>
-      <div class="bubble">{{ message }}</div>
+      <div class="bubble">
+        {{ message }}
+      </div>
     </div>
   </div>
 </template>
@@ -18,9 +15,12 @@
 <script setup>
 const props = defineProps({
   message: String,
-  sent: Boolean,         // true si c'est l'utilisateur qui envoie
-  time: String,          // date au format ISO
-  profileUrl: String     // chemin vers l'image de profil
+  sent: Boolean,
+  time: String,
+  profileImage: {
+    type: String,
+    default: '/default-profile.png' // Image par défaut
+  }
 })
 
 const formatTime = (iso) => {
@@ -38,12 +38,10 @@ const formatTime = (iso) => {
 .message-container {
   display: flex;
   align-items: flex-end;
-  margin: 10px 0;
-  max-width: 100%;
+  margin-bottom: 12px;
 }
 
 .sent {
-  flex-direction: row-reverse;
   justify-content: flex-end;
 }
 
@@ -55,31 +53,35 @@ const formatTime = (iso) => {
   width: 36px;
   height: 36px;
   border-radius: 50%;
-  object-fit: cover;
-  margin: 0 10px;
+  margin-right: 8px;
 }
 
 .message-content {
   display: flex;
   flex-direction: column;
-  max-width: 70%;
+  align-items: flex-end;
+}
+
+.received .message-content {
+  align-items: flex-start;
 }
 
 .timestamp {
-  font-size: 0.7rem;
-  color: #999;
+  font-size: 0.75rem;
+  color: #aaa;
   margin-bottom: 4px;
 }
 
 .bubble {
-  padding: 12px 16px;
-  border-radius: 18px;
+  max-width: 90%;
+  padding: 10px 15px;
+  border-radius: 20px;
+  word-break: break-word;
   background-color: #005c4b;
   color: white;
-  word-wrap: break-word;
 }
 
 .received .bubble {
-  background-color: #2a2f32;
+  background-color: #202c33;
 }
 </style>
