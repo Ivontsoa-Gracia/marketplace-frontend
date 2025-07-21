@@ -50,8 +50,8 @@ const formatTime = (iso) => {
 }
 
 .profile-pic {
-  width: 36px;
-  height: 36px;
+  width: 25px;
+  height: 25px;
   border-radius: 50%;
   margin-right: 8px;
 }
