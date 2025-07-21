@@ -1,6 +1,7 @@
 <template>
     <div class="chat">
       <div class="messages">
+        <MSidebar />
         <MessageBubble
           v-for="(msg, i) in messages"
           :key="i"
@@ -19,6 +20,7 @@
   <script setup>
   import { ref } from 'vue'
   import MessageBubble from '../../../organics/marketplace/enchere/MessageBubble.vue';
+  import MSidebar from '../../../molecules/marketplace/enchere/MSidebar.vue';
   
   const input = ref('')
   const messages = ref([
