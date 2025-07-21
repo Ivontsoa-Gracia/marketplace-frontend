@@ -1,10 +1,13 @@
 <template>
   <div :class="['message-container', sent ? 'sent' : 'received']">
+    <!-- Image de profil -->
     <img
       class="profile-pic"
       :src="profileUrl"
-      alt="Profile"
+      alt="Profil"
     />
+
+    <!-- Contenu du message -->
     <div class="message-content">
       <div class="timestamp">{{ formatTime(time) }}</div>
       <div class="bubble">{{ message }}</div>
@@ -15,9 +18,9 @@
 <script setup>
 const props = defineProps({
   message: String,
-  sent: Boolean,
-  time: String,
-  profileUrl: String, // URL de la photo de profil
+  sent: Boolean,         // true si c'est l'utilisateur qui envoie
+  time: String,          // date au format ISO
+  profileUrl: String     // chemin vers l'image de profil
 })
 
 const formatTime = (iso) => {
@@ -35,7 +38,8 @@ const formatTime = (iso) => {
 .message-container {
   display: flex;
   align-items: flex-end;
-  margin-bottom: 12px;
+  margin: 10px 0;
+  max-width: 100%;
 }
 
 .sent {
@@ -48,39 +52,34 @@ const formatTime = (iso) => {
 }
 
 .profile-pic {
-  width: 32px;
-  height: 32px;
+  width: 36px;
+  height: 36px;
   border-radius: 50%;
   object-fit: cover;
-  margin: 0 8px;
+  margin: 0 10px;
 }
 
 .message-content {
   display: flex;
   flex-direction: column;
-  align-items: flex-end;
-}
-
-.received .message-content {
-  align-items: flex-start;
+  max-width: 70%;
 }
 
 .timestamp {
-  font-size: 0.75rem;
-  color: #aaa;
+  font-size: 0.7rem;
+  color: #999;
   margin-bottom: 4px;
 }
 
 .bubble {
-  max-width: 90%;
-  padding: 10px 15px;
-  border-radius: 20px;
-  word-break: break-word;
+  padding: 12px 16px;
+  border-radius: 18px;
   background-color: #005c4b;
   color: white;
+  word-wrap: break-word;
 }
 
 .received .bubble {
-  background-color: #202c33;
+  background-color: #2a2f32;
 }
 </style>
