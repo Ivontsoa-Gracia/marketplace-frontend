@@ -56,6 +56,7 @@
   .timestamp {
     text-align: center;
     align-items: center;
+    color: azure;
   }
   </style>
   
