@@ -46,6 +46,8 @@
     margin: 0;
     padding: 0;
     box-sizing: inherit;
+    top: 0;
+  `left: 0;
   }
   .content {
     flex: 1;

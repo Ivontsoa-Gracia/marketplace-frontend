@@ -1,275 +1,304 @@
 <template>
-    <div class="layout-container">
-      <!-- Header -->
-      <header class="header">
-        <div class="logo">
-          <img src="/logo SVG/marketplace-logo.png" alt="Logo" />
-          <div class="logo-name">
-            <h3>AgriTrade</h3>
-            <p>Smart Saha Marketplace</p>
-          </div>
-        </div>
-  
-        <div class="action">
-          <AIcon url="/icon SVG/chatbox.svg" width="24px" height="24px" borderWidth="0px" backgroundColor="transparent" />
-  
-          <div class="profile-container" @click="toggleDropdown">
-            <AIcon url="/icon SVG/profile.svg" width="30px" height="30px" borderWidth="0px" backgroundColor="transparent" />
-            <ul class="dropdown" v-if="dropdownOpen">
-              <li><a href="/profil">Dashboard</a></li>
-              <li><a href="/logout">Log out</a></li>
-            </ul>
-          </div>
-        </div>
-      </header>
-  
-      <!-- Content below header -->
-      <div class="content-area">
-        <!-- Sidebar -->
-        <aside class="sidebar">
-          <nav class="sidebar-nav">
-            <ul>
-              <li>
-                <router-link to="/" class="nav-link">
-                  <i class="fas fa-home"></i> <span>Home</span>
-                </router-link>
-              </li>
-  
-              <li>
-                <div class="nav-link toggle-link" @click="toggleListing">
-                  <i class="fas fa-list"></i> <span>Listing</span>
-                  <i :class="['fas', listingOpen ? 'fa-chevron-up' : 'fa-chevron-down']" class="chevron-icon"></i>
+  <div class="layout-container">
+    <div class="content-area">
+      <aside class="sidebar">
+        <nav class="sidebar-nav">
+          <ul>
+            <li class="logo-item">
+              <router-link to="/">
+                <img src="/logo SVG/marketplace-logo.png" alt="Marketplace Logo" class="sidebar-logo" />
+              </router-link>
+            </li>
+
+            <li>
+              <router-link to="/" class="nav-icon" title="Home">
+                <HomeIcon />
+              </router-link>
+            </li>
+
+            <li>
+              <router-link to="/profil" class="nav-icon" title="Dashboard">
+                <GridIcon />
+              </router-link>
+            </li>
+
+            <li>
+              <div class="nav-icon toggle-link" @click="toggleListing" title="Listing">
+                <ListIcon />
+                <ChevronDownIcon v-if="!listingOpen" class="chevron-icon" />
+                <ChevronUpIcon v-else class="chevron-icon" />
+              </div>
+              <ul v-if="listingOpen" class="submenu">
+                <li>
+                  <router-link to="/profil/listing/add" class="nav-icon" title="Add Listing">
+                    <PlusIcon />
+                  </router-link>
+                </li>
+                <li>
+                  <router-link to="/profil/listing/view" class="nav-icon" title="View Listing">
+                    <EyeIcon />
+                  </router-link>
+                </li>
+              </ul>
+            </li>
+
+            <li>
+              <router-link to="/profil/enchere/chat" class="nav-icon" title="ChatBox">
+                <MessageCircleIcon />
+              </router-link>
+            </li>
+
+            <!-- Profil / Déconnexion -->
+            <li class="profile-bottom" v-click-outside="closeDropdown">
+              <div class="profile-container" @click="toggleDropdown" title="Profile">
+                <UserIcon />
+              </div>
+
+              <transition name="fade">
+                <div v-if="dropdownOpen" class="dropdown-popover">
+                  <a href="#" @click.prevent="confirmLogout" class="dropdown-link flex items-center gap-2 text-red-600 hover:text-red-800">
+                    <LogOut class="w-5 h-5" />
+                    <span>Déconnexion</span>
+                  </a>
                 </div>
-                <ul v-if="listingOpen" class="submenu">
-                  <li>
-                    <router-link to="/profil/listing/add" class="nav-link">
-                      <i class="fas fa-plus"></i> <span>Add Listing</span>
-                    </router-link>
-                  </li>
-                  <li>
-                    <router-link to="/profil/listing/view" class="nav-link">
-                      <i class="fas fa-eye"></i> <span>View Listing</span>
-                    </router-link>
-                  </li>
-                </ul>
-              </li>
-  
-              <li>
-                <router-link to="/profil/enchere/chat" class="nav-link">
-                  <i class="fas fa-comments"></i> <span>ChatBox</span>
-                </router-link>
-              </li>
-            </ul>
-          </nav>
-        </aside>
-  
-        <!-- Main Page Content -->
-        <div class="page-content">
-          <slot />
-        </div>
+              </transition>
+            </li>
+          </ul>
+        </nav>
+      </aside>
+
+      <!-- Contenu principal -->
+      <div class="page-content">
+        <slot />
       </div>
     </div>
-  </template>
-  
-  <script>
-  import AIcon from "../../../atomes/AIcon.vue";
-  
-  export default {
-    name: "MSidebar",
-    components: {
-      AIcon,
-    },
-    data() {
-      return {
-        listingOpen: false,
-        dropdownOpen: false,
-      };
-    },
-    methods: {
-      toggleListing() {
-        this.listingOpen = !this.listingOpen;
-      },
-      toggleDropdown() {
-        this.dropdownOpen = !this.dropdownOpen;
-      },
-    },
-  };
-  </script>
-  
-  <style scoped>
-  @import url('https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css');
-  
-  .layout-container {
-    font-family: 'Poppins', sans-serif;
-    width: 100%;
+
+    <!-- ✅ Popup déconnexion -->
+    <transition name="fade">
+      <div v-if="showModal" class="fixed inset-0 bg-black/50 flex items-center justify-center z-50">
+        <div class="bg-white rounded-xl p-6 shadow-xl w-[90%] max-w-sm text-center">
+          <h2 class="text-lg font-semibold mb-4">Confirmer la déconnexion</h2>
+          <p class="mb-6 text-gray-600">Voulez-vous vraiment vous déconnecter ?</p>
+          <div class="flex justify-center gap-4">
+            <button @click="showModal = false" class="px-4 py-2 bg-gray-200 text-gray-700 rounded hover:bg-gray-300">
+              Annuler
+            </button>
+            <button @click="logout" class="px-4 py-2 bg-red-600 text-white rounded hover:bg-red-700">
+              Se déconnecter
+            </button>
+          </div>
+        </div>
+      </div>
+    </transition>
+  </div>
+</template>
+
+<script setup>
+import { ref } from 'vue'
+import vClickOutside from 'v-click-outside'
+import {
+  HomeIcon,
+  GridIcon,
+  ListIcon,
+  ChevronDownIcon,
+  ChevronUpIcon,
+  PlusIcon,
+  EyeIcon,
+  MessageCircleIcon,
+  UserIcon,
+  LogOut
+} from 'lucide-vue-next'
+
+const listingOpen = ref(false)
+const dropdownOpen = ref(false)
+const showModal = ref(false)
+
+function toggleListing() {
+  listingOpen.value = !listingOpen.value
+}
+
+function toggleDropdown() {
+  dropdownOpen.value = !dropdownOpen.value
+}
+
+function closeDropdown() {
+  dropdownOpen.value = false
+}
+
+function confirmLogout() {
+  showModal.value = true
+}
+
+function logout() {
+  window.location.href = '/logout'
+}
+</script>
+
+<script>
+export default {
+  directives: {
+    clickOutside: (await import('v-click-outside')).default
   }
-  
-  .header {
-    position: fixed;
-    background-color: #fefefe;
-    width: 100%;
-    max-width: 100vw;
-    height: 60px;
-    padding: 0 40px;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    /* position: relative; */
-    box-sizing: border-box;
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
-    z-index: 1000;
-    font-family: 'Poppins', sans-serif;
-    top: 0;
-    left: 0;
-  }
-  
-  /* Main content area after header */
-  .content-area {
-    display: flex;
-    margin-top: 60px; /* same height as header */
-    height: calc(100vh - 60px);
-    overflow: hidden;
-  }
-  
-  /* Sidebar */
-  .sidebar {
-    width: 220px;
-    background-color: #2dcc70;
-    color: white;
-    padding: 20px;
-    box-sizing: border-box;
-    flex-shrink: 0;
-  }
-  
-  .sidebar-nav ul {
-    list-style: none;
-    padding: 0;
-    margin: 0;
-  }
-  
-  .sidebar-nav li {
-    margin-bottom: 10px;
-  }
-  
-  .nav-link {
-    display: flex;
-    align-items: center;
-    gap: 10px;
-    color: white;
-    text-decoration: none;
-    font-size: 15px;
-    padding: 10px;
-    border-radius: 6px;
-    transition: background-color 0.3s ease;
-  }
-  
-  .nav-link:hover {
-    background-color: rgba(255, 255, 255, 0.1);
-  }
-  
-  .toggle-link {
-    cursor: pointer;
-    justify-content: space-between;
-  }
-  
-  .chevron-icon {
-    margin-left: auto;
-  }
-  
-  .submenu {
-    margin-top: 5px;
-    margin-left: 20px;
-    display: flex;
-    flex-direction: column;
-    gap: 5px;
-  }
-  
-  .submenu .nav-link {
-    font-size: 14px;
-    background-color: rgba(255, 255, 255, 0.05);
-    padding: 8px 10px;
-    border-radius: 4px;
-  }
-  
-  /* Page content */
-  .page-content {
-    flex: 1;
-    overflow-y: auto;
-    padding: 20px;
-    background: #f9f9f9;
-  }
-  
-  /* Header logo & action styles */
-  .logo {
-    display: flex;
-    align-items: center;
-    gap: 10px;
-  }
-  
-  .logo img {
-    height: 40px;
-    width: auto;
-    border-radius: 8px;
-  }
-  
-  .logo-name {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    line-height: 1.2;
-  }
-  
-  .logo-name h3 {
-    margin: 0;
-    font-size: 16px;
-    color: #2DCC70;
-    font-weight: bold;
-  }
-  
-  .logo-name p {
-    margin: 0;
-    font-size: 12px;
-    color: #212121;
-  }
-  
-  .action {
-    display: flex;
-    align-items: center;
-    gap: 30px;
-  }
-  
-  .profile-container {
-    position: relative;
-    cursor: pointer;
-  }
-  
-  .dropdown {
-    position: absolute;
-    top: 110%;
-    right: 0;
-    background-color: white;
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
-    list-style: none;
-    padding: 8px 0;
-    border-radius: 4px;
-    min-width: 140px;
-    z-index: 100;
-  }
-  
-  .dropdown li {
-    font-size: 14px;
-    padding: 10px 16px;
-    transition: background-color 0.3s;
-  }
-  
-  .dropdown li:hover {
-    background-color: #f0f0f0;
-  }
-  
-  .dropdown li a {
-    text-decoration: none;
-    color: #212121;
-    display: block;
-  }
-  </style>
-  
+}
+</script>
+
+<style scoped>
+/* Layout structure */
+.layout-container {
+  width: 100%;
+  height: 100vh;
+  overflow: hidden;
+  background: #fcffff;
+  font-family: 'Poppins', sans-serif;
+}
+
+.content-area {
+  display: flex;
+  height: 100%;
+}
+
+/* Sidebar styling */
+.sidebar {
+  width: 80px;
+  background: #0f1115;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 100%;
+  z-index: 100;
+  padding: 20px 0;
+}
+
+.sidebar-nav ul {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 25px;
+  padding: 0;
+  margin: 0;
+  list-style: none;
+}
+
+.logo-item {
+  margin-bottom: 20px;
+}
+
+.sidebar-logo {
+  width: 40px;
+  height: auto;
+  border-radius: 6px;
+}
+
+.nav-icon {
+  color: #10b981;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 40px;
+  height: 40px;
+  border-radius: 10px;
+  transition: background 0.3s ease;
+  cursor: pointer;
+}
+
+.nav-icon:hover {
+  background: rgba(16, 185, 129, 0.15);
+}
+
+/* Submenu */
+.toggle-link {
+  position: relative;
+}
+
+.chevron-icon {
+  position: absolute;
+  right: -8px;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 14px;
+  height: 14px;
+  stroke: #10b981;
+}
+
+.submenu {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+}
+
+.submenu .nav-icon {
+  width: 30px;
+  height: 30px;
+}
+
+/* Profile & dropdown */
+.profile-bottom {
+  position: relative;
+  margin-top: auto;
+}
+
+.profile-container {
+  color: #10b981;
+  width: 40px;
+  height: 40px;
+  border-radius: 10px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transition: background 0.3s;
+  cursor: pointer;
+}
+
+.profile-container:hover {
+  background: rgba(16, 185, 129, 0.15);
+}
+
+.dropdown-popover {
+  position: absolute;
+  bottom: 60px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: #2e2e2e;
+  padding: 10px 0;
+  border-radius: 8px;
+  box-shadow: 0 0 10px rgba(16, 185, 129, 0.3);
+  min-width: 140px;
+  z-index: 1000;
+}
+
+.dropdown-link {
+  display: block;
+  padding: 10px 20px;
+  color: white;
+  font-size: 14px;
+  transition: background 0.3s;
+  text-decoration: none;
+}
+
+.dropdown-link:hover {
+  background: #10b981;
+  color: #121212;
+}
+
+/* Page content */
+.page-content {
+  margin-left: 80px;
+  flex: 1;
+  overflow-y: auto;
+  padding: 20px;
+  box-sizing: border-box;
+}
+
+/* Transition */
+.fade-enter-active, .fade-leave-active {
+  transition: opacity 0.2s ease;
+}
+.fade-enter-from, .fade-leave-to {
+  opacity: 0;
+}
+</style>

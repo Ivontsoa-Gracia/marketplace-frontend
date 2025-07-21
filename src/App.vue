@@ -12,16 +12,16 @@ export default {}
 * {
   margin: 0;
   padding: 0;
-  box-sizing: inherit;
+  box-sizing: border-box;
 }
 .app-layout {
   display: flex;
   flex-direction: column;
   margin: 0;
   padding: 0;
-  box-sizing: inherit;
   top: 0;
   left: 0;
+  font-family: 'Poppins', sans-serif;
 }
 .content {
   flex: 1;

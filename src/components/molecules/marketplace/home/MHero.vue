@@ -158,6 +158,8 @@
   box-sizing: border-box;
   max-width: 100vw;
   font-family: 'Poppins', sans-serif;
+  top: 0;
+  left: 0;
 
 }
 

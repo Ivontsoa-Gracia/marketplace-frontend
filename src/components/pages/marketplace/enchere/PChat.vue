@@ -63,7 +63,10 @@
       </div>
     </div>
 
-    <Annonce :status="negotiationStatus" />
+    <!-- <Annonce :status="negotiationStatus" /> -->
+    <Annonce
+  />
+
   </div>
 </template>
 
